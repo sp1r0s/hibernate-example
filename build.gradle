@@ -1,0 +1,33 @@
+apply plugin: 'spring-boot'
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.2.6.RELEASE',
+                'com.netflix.nebula:gradle-ospackage-plugin:2.2.0'
+    }
+}
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile('org.springframework.boot:spring-boot-starter-web:1.2.6.RELEASE')
+    compile('org.springframework.boot:spring-boot-starter-actuator:1.2.6.RELEASE')
+    compile('com.google.guava:guava:18.0')
+
+    testCompile('junit:junit:4.11')
+}
+
+task deleteLogFiles(type: Delete) {
+    delete fileTree('logs/') {
+        include '**/*'
+    }
+}
+
+clean.dependsOn deleteLogFiles
