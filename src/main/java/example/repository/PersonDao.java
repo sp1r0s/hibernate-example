@@ -1,8 +1,9 @@
 package example.repository;
 
 import example.model.Person;
+import org.springframework.data.repository.CrudRepository;
 
-public interface PersonDao {
+public interface PersonDao extends CrudRepository<Person, Long> {
 
-    Person getPerson(int id);
+    Person findById(int id);
 }
