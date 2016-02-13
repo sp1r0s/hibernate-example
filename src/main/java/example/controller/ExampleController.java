@@ -21,6 +21,6 @@ public class ExampleController {
 
     @RequestMapping(value = "/", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
     public ResponseEntity getMessage() {
-        return new ResponseEntity<>(service.getMessage(), HttpStatus.OK);
+        return new ResponseEntity<>(service.getMessage(1), HttpStatus.OK);
     }
 }
